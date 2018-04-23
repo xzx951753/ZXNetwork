@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ZXNetwork_Example' do
+  pod 'ZXNetwork', :path => '../'
+
+  target 'ZXNetwork_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
