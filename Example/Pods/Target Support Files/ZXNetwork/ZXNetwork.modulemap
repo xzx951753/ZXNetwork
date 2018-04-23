@@ -1,0 +1,6 @@
+framework module ZXNetwork {
+  umbrella header "ZXNetwork-umbrella.h"
+
+  export *
+  module * { export * }
+}

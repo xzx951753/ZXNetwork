@@ -7,6 +7,7 @@
 //
 
 #import "ZXViewController.h"
+#import <ZXnetwork/ZXNetwork.h>
 
 @interface ZXViewController ()
 
@@ -17,7 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [ZXNetworkManager sendRequestMethod:HTTPMethodGET serverUrl:@"http://192.168.88.249:20000" apiPath:@"index" parameters:nil progress:nil success:^(BOOL isSuccess, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSString * _Nullable errorMessage) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning
