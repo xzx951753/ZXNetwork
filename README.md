@@ -1,20 +1,24 @@
 # ZXNetwork
-
-[![CI Status](http://img.shields.io/travis/xzx951753/ZXNetwork.svg?style=flat)](https://travis-ci.org/xzx951753/ZXNetwork)
-[![Version](https://img.shields.io/cocoapods/v/ZXNetwork.svg?style=flat)](http://cocoapods.org/pods/ZXNetwork)
-[![License](https://img.shields.io/cocoapods/l/ZXNetwork.svg?style=flat)](http://cocoapods.org/pods/ZXNetwork)
-[![Platform](https://img.shields.io/cocoapods/p/ZXNetwork.svg?style=flat)](http://cocoapods.org/pods/ZXNetwork)
+AFNetworking的简单封装
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```Objective-C
 
-## Requirements
+    [ZXNetworkManager sendRequestMethod:HTTPMethodGET
+                              serverUrl:@"http://192.168.88.249:20000"
+                                apiPath:@"index"
+                             parameters:nil
+                               progress:nil
+                                success:^(BOOL isSuccess, id  _Nullable responseObject) {
+                                    NSLog(@"%@",responseObject);
+                              } failure:^(NSString * _Nullable errorMessage) {
+                                    NSLog(@"%@",errorMessage);
+                              }];
+```
+
 
 ## Installation
-
-ZXNetwork is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'ZXNetwork'

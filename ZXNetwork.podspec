@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ZXNetwork'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ZXNetwork.'
+  s.summary          = 'AFNetworking 的简单封装(OC)'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,18 +25,11 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'xzx951753' => '285644797@qq.com' }
-  s.source           = { :git => 'https://github.com/xzx951753/ZXNetwork.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/xzx951753/ZXNetwork.git' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'ZXNetwork/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'ZXNetwork' => ['ZXNetwork/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'AFNetworking', '~> 3.2.0'
 end

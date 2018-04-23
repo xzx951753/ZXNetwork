@@ -18,10 +18,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [ZXNetworkManager sendRequestMethod:HTTPMethodGET serverUrl:@"http://192.168.88.249:20000" apiPath:@"index" parameters:nil progress:nil success:^(BOOL isSuccess, id  _Nullable responseObject) {
+    [ZXNetworkManager sendRequestMethod:HTTPMethodGET
+                              serverUrl:@"http://192.168.88.249:20000"
+                                apiPath:@"index"
+                             parameters:nil
+                               progress:nil
+                                success:^(BOOL isSuccess, id  _Nullable responseObject) {
         NSLog(@"%@",responseObject);
     } failure:^(NSString * _Nullable errorMessage) {
-        
+        NSLog(@"%@",errorMessage);
     }];
 }
 
