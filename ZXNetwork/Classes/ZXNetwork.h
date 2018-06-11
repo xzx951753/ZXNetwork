@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HTTPMethod) {
     HTTPMethodDELETE,
 };
 
-
+#define ZXNetworkDidFailureNotification @"ZXNetworkDidFailureNotification"
 
 #define ZXNetworkManager ([ZXNetwork defaultManager])
 

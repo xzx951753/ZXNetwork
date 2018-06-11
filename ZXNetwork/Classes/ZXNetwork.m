@@ -36,9 +36,17 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
         self.sessionManager.requestSerializer.timeoutInterval = 10.0;
         //设置相应内容的类型
         self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json",@"text/javascript",@"text/html",nil];
+
     }
     return self;
 }
+
+
+- (void)failureNotificationHandle:(NSNotification*)noti{
+    
+}
+
+
 
 
 /**
@@ -147,6 +155,8 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
     NSLog(@"afNetworking_errorMsg == %@",[[NSString alloc]initWithData:afNetworking_errorMsg encoding:NSUTF8StringEncoding]);
     if (!afNetworking_errorMsg) {
         message = @"网络连接失败";
+        //发送通知，告知网络连接失败
+        [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidFailureNotification object:nil];
     }
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
     NSInteger responseStatue = response.statusCode;

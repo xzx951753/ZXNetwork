@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
     [ZXNetworkManager sendRequestMethod:HTTPMethodGET
-                              serverUrl:@"http://192.168.88.249:20000"
+                              serverUrl:@"http://192.168.88.249:2000"
                                 apiPath:@"index"
                              parameters:nil
                                progress:nil
@@ -28,6 +28,12 @@
     } failure:^(NSString * _Nullable errorMessage) {
         NSLog(@"%@",errorMessage);
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failure:) name:ZXNetworkDidFailureNotification object:nil];
+}
+
+- (void)failure:(NSNotification*)notic{
+    NSLog(@"获取到失败通知!");
 }
 
 - (void)didReceiveMemoryWarning
