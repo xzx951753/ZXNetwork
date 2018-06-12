@@ -79,6 +79,8 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if ( failure ){
                     failure([self failHandleWithErrorResponse:error task:task]);
+                }else{
+                    [self failHandleWithErrorResponse:error task:task];
                 }
             }];
         }
@@ -92,6 +94,8 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if ( failure ){
                     failure([self failHandleWithErrorResponse:error task:task]);
+                }else{
+                    [self failHandleWithErrorResponse:error task:task];
                 }
             }];
         }
@@ -105,6 +109,8 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if ( failure ){
                     failure([self failHandleWithErrorResponse:error task:task]);
+                }else{
+                    [self failHandleWithErrorResponse:error task:task];
                 }
             }];
         }
@@ -118,6 +124,8 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if ( failure ){
                     failure([self failHandleWithErrorResponse:error task:task]);
+                }else{
+                    [self failHandleWithErrorResponse:error task:task];
                 }
             }];
         }
@@ -131,6 +139,8 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 if ( failure ){
                     failure([self failHandleWithErrorResponse:error task:task]);
+                }else{
+                    [self failHandleWithErrorResponse:error task:task];
                 }
             }];
         }
@@ -152,7 +162,7 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
     __block NSString *message = nil;
     // 这里可以直接设定错误反馈，也可以利用AFN 的error信息直接解析展示
     NSData *afNetworking_errorMsg = [error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey];
-    NSLog(@"afNetworking_errorMsg == %@",[[NSString alloc]initWithData:afNetworking_errorMsg encoding:NSUTF8StringEncoding]);
+//    NSLog(@"afNetworking_errorMsg == %@",[[NSString alloc]initWithData:afNetworking_errorMsg encoding:NSUTF8StringEncoding]);
     if (!afNetworking_errorMsg) {
         message = @"网络连接失败";
         //发送通知，告知网络连接失败
@@ -167,7 +177,7 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
         NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:afNetworking_errorMsg options:NSJSONReadingAllowFragments error:nil];
         message = responseObject[@"error"];
     }
-    NSLog(@"error == %@",error);
+//    NSLog(@"error == %@",error);
     return message;
 }
 @end

@@ -24,10 +24,9 @@
                              parameters:nil
                                progress:nil
                                 success:^(BOOL isSuccess, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
-    } failure:^(NSString * _Nullable errorMessage) {
-        NSLog(@"%@",errorMessage);
-    }];
+                                    NSLog(@"%@",responseObject);
+                                }
+                                failure:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failure:) name:ZXNetworkDidFailureNotification object:nil];
 }
