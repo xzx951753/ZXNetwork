@@ -20,7 +20,7 @@ AFNetworking的简单封装
 
 ## Updated  
 0.1.3 ：针对服务器status 500+ 和400+ 错误发送相应的通知  
-
+0.1.4 ：修复当出现400+错误时，导致崩溃.
 
 ## Installation
 

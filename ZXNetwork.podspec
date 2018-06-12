@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZXNetwork'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'AFNetworking 的简单封装(OC)'
 
 # This description is used to generate tags and improve search results.

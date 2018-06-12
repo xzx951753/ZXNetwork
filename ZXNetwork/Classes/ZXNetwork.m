@@ -167,15 +167,14 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
         //发送通知，告知网络连接失败
         [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidFailureNotification object:nil];
     }
+    
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
     NSInteger responseStatue = response.statusCode;
     if (responseStatue >= 500) {//服务器发生错误
         message = @"服务器错误";
         [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidServerErrorNotification object:nil];
     } else if (responseStatue >= 400) {//页面丢失
-        // 错误信息
-        NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:afNetworking_errorMsg options:NSJSONReadingAllowFragments error:nil];
-        message = responseObject[@"找不到该页面"];
+        message = @"找不到该页面";
         [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidPageNoFoundNotification object:nil];
     }
     return message;
