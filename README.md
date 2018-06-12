@@ -18,6 +18,10 @@ AFNetworking的简单封装
 ```
 
 
+## Updated  
+0.1.3 ：针对服务器status 500+ 和400+ 错误发送相应的通知  
+
+
 ## Installation
 
 ```ruby

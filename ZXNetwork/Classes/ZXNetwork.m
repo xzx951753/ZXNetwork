@@ -162,22 +162,22 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
     __block NSString *message = nil;
     // 这里可以直接设定错误反馈，也可以利用AFN 的error信息直接解析展示
     NSData *afNetworking_errorMsg = [error.userInfo objectForKey:AFNetworkingOperationFailingURLResponseDataErrorKey];
-//    NSLog(@"afNetworking_errorMsg == %@",[[NSString alloc]initWithData:afNetworking_errorMsg encoding:NSUTF8StringEncoding]);
-    if (!afNetworking_errorMsg) {
+    if (!afNetworking_errorMsg) {//网络请求发生错误
         message = @"网络连接失败";
         //发送通知，告知网络连接失败
         [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidFailureNotification object:nil];
     }
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
     NSInteger responseStatue = response.statusCode;
-    if (responseStatue >= 500) {  // 网络错误
-        message = @"服务器维护升级中,请耐心等待";
-    } else if (responseStatue >= 400) {
+    if (responseStatue >= 500) {//服务器发生错误
+        message = @"服务器错误";
+        [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidServerErrorNotification object:nil];
+    } else if (responseStatue >= 400) {//页面丢失
         // 错误信息
         NSDictionary *responseObject = [NSJSONSerialization JSONObjectWithData:afNetworking_errorMsg options:NSJSONReadingAllowFragments error:nil];
-        message = responseObject[@"error"];
+        message = responseObject[@"找不到该页面"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ZXNetworkDidPageNoFoundNotification object:nil];
     }
-//    NSLog(@"error == %@",error);
     return message;
 }
 @end
