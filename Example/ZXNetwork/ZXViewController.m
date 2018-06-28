@@ -19,8 +19,8 @@
 {
     [super viewDidLoad];
     [ZXNetworkManager sendRequestMethod:HTTPMethodGET
-                              serverUrl:@"http://192.168.88.249:2000"
-                                apiPath:@"index"
+                              serverUrl:@"https://www.baidu.com"
+                                apiPath:nil
                              parameters:nil
                                progress:nil
                                 success:^(BOOL isSuccess, id  _Nullable responseObject) {

@@ -67,7 +67,7 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
                                            progress:(nullable void (^)(NSProgress * _Nullable progress))progress
                                             success:(nullable void (^)(BOOL isSuccess,id _Nullable responseObject))success
                                             failure:(nullable void (^)(NSString * _Nullable errorMessage))failure{
-    NSString * requestPath = [serverUrl stringByAppendingPathComponent:apiPath];
+    NSString * requestPath = [[NSString alloc] initWithFormat:@"%@/%@",serverUrl,apiPath?apiPath:@""];
     NSURLSessionDataTask * task = nil;
     switch (requestMethod) {
         case HTTPMethodGET:
