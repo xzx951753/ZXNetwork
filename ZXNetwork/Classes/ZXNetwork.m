@@ -30,13 +30,14 @@ static ZXNetwork* ZXNetworkDefaultManager = nil;
 - (instancetype)init{
     if ( self = [super init] ){
         self.sessionManager = [AFHTTPSessionManager manager];
-        //设置请求以及相应的序列化器
-        self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        //声明返回数据结果为json格式
+        self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
         //设置超时时间
         self.sessionManager.requestSerializer.timeoutInterval = 10.0;
         //设置相应内容的类型
-        self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json",@"text/javascript",@"text/html",nil];
-
+        self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",@"text/javascript",@"text/json",@"text/plain",@"charset=UTF-8", nil];
+        // 设置请求头
+        [self.sessionManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     }
     return self;
 }
